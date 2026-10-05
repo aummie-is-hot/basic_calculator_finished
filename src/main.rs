@@ -152,12 +152,17 @@ async fn main() {
                 lbl_text.set_text("Please enter valid numbers.");
             }
         }
+        
+       
+  
+        input_firstnum.draw();
+        input_secondnum.draw();
         if edward == true {
             img_edward.draw();
             lbl_text.set_text("i dont know him");
             lbl_text.with_colors(BLACK, Some(WHITE));
         } 
-         if btn_exit.click() {
+          if btn_exit.click() {
             if edward == true{
                 edward = false;
                 lbl_text.set_text(&format!("Result: {}", edwardresult));
@@ -166,9 +171,7 @@ async fn main() {
             }
           
         }
-        lbl_text.draw();
-        input_firstnum.draw();
-        input_secondnum.draw();
+         lbl_text.draw();
         next_frame().await;
     }
 }
