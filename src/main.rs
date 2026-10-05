@@ -68,7 +68,7 @@ async fn main() {
     btn_divide.with_hover_text_color(WHITE);
     btn_multiples.with_text_color(BLACK); // Sets the normal text color
     btn_multiples.with_hover_text_color(WHITE);
-    
+    let mut edwardresult: f64 = 0.0;
     let mut btn_exit = TextButton::new(1450.0, 650.0, 200.0, 60.0, "Exit", WHITE, RED, 30);
      btn_exit.with_text_color(BLACK); // Sets the normal text color
     btn_exit.with_hover_text_color(WHITE);
@@ -88,9 +88,7 @@ async fn main() {
 }
     loop {
         clear_background(WHITE);
-        if btn_exit.click() {
-            break;
-        }
+       
         if btn_subtract.click() {
             let firstnum_text = input_firstnum.get_text();
             let secondnum_text = input_secondnum.get_text();
@@ -101,6 +99,7 @@ async fn main() {
               
               let result = operations(2, parsed_value, parsed_value2);
                 lbl_text.set_text(&format!("Result: {}", result));
+                 edwardresult = result;
             } else {
                 lbl_text.set_text("Please enter valid numbers.");
             }
@@ -115,6 +114,7 @@ async fn main() {
                 }
                 let result = operations(3, parsed_value, parsed_value2);
                 lbl_text.set_text(&format!("Result: {}", result));
+                 edwardresult = result;
                 
             } else {
                 lbl_text.set_text("Please enter valid numbers.");
@@ -130,6 +130,7 @@ async fn main() {
                 if parsed_value2 != 0.0 {
                     let result = operations(4, parsed_value, parsed_value2);
                     lbl_text.set_text(&format!("Result: {}", result));
+                     edwardresult = result;
                 } else {
                     lbl_text.set_text("Error: Division by zero is not allowed.");
                 }
@@ -146,6 +147,7 @@ async fn main() {
                 }
                 let result = operations(1, parsed_value, parsed_value2);
                 lbl_text.set_text(&format!("Result: {}", result));
+                edwardresult = result;
             } else {
                 lbl_text.set_text("Please enter valid numbers.");
             }
@@ -153,8 +155,17 @@ async fn main() {
         if edward == true {
             img_edward.draw();
             lbl_text.set_text("i dont know him");
-            lbl_text.with_colors(WHITE, Some(DARKGRAY));
+            lbl_text.with_colors(BLACK, Some(WHITE));
         } 
+         if btn_exit.click() {
+            if edward == true{
+                edward = false;
+                lbl_text.set_text(&format!("Result: {}", edwardresult));
+            } else {
+                break;
+            }
+          
+        }
         lbl_text.draw();
         input_firstnum.draw();
         input_secondnum.draw();
