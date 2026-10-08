@@ -17,7 +17,7 @@ use crate::ui::text_input::TextInput;
 /// Set up window settings before the app runs
 fn window_conf() -> Conf {
     Conf {
-        window_title: "basic_calculator_finished".to_string(),
+        window_title: "basic calculator".to_string(),
         window_width: 1700,
         window_height: 800,
         fullscreen: false,
