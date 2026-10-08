@@ -52,6 +52,18 @@ async fn main() {
         100.0,
         30,
     );
+    let mut lbl_Type_first = Label::new(
+        "Type first number",
+        450.0,
+        250.0,
+        30,
+    );
+    let mut lbl_Type_second = Label::new(
+        "Type second number and click on the operation ",
+        800.0,
+        250.0,
+        30,
+    );
      let mut input_firstnum = TextInput::new(500.0, 300.0, 150.0, 40.0, 25.0);
     let mut input_secondnum = TextInput::new(900.0, 300.0, 150.0, 40.0, 25.0);
     //let mut num1: f64 = 0.0;
@@ -88,7 +100,9 @@ async fn main() {
 }
     loop {
         clear_background(WHITE);
-       
+     
+          lbl_Type_first.draw();
+           lbl_Type_second.draw();
         if btn_subtract.click() {
             let firstnum_text = input_firstnum.get_text();
             let secondnum_text = input_secondnum.get_text();
